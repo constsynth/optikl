@@ -2,7 +2,7 @@ import tensorflow_addons as tfa
 from keras.layers import Add, Conv2D, Input, Lambda
 from keras.models import Model
 
-from cspackage.model.common import normalize, denormalize, pixel_shuffle
+from optikl.model.common import normalize, denormalize, pixel_shuffle
 
 
 def wdsr_a(scale, num_filters=32, num_res_blocks=8, res_block_expansion=4, res_block_scaling=None):
