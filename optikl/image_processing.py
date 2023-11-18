@@ -75,10 +75,10 @@ def find_face(img_path: str = None, show: bool = False, save: bool = True) -> di
     faces = []
     for (x, y, w, h) in face:
         cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), thickness=3)
-        x1 = face[0][0]
-        y1 = face[0][1]
-        x2 = face[0][0] + face[0][2]
-        y2 = face[0][1] + face[0][3]
+        x1 = x
+        y1 = y
+        x2 = x+w
+        y2 = y+h
         square = ((x1, y1), (x2, y2))
         faces.append(square)
     image_to_show = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
