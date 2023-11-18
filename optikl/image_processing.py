@@ -55,15 +55,15 @@ def super_resolution(image_path: str = None, save: bool = False) -> Image.Image:
         image.save('./after_sr.jpg')
     return image
 
-def represent(path_to_image: str = None, to_vector: bool = False, to_tensor: bool = True):
+def represent(path_to_image: str = None, to_vector: bool = False, to_tensor: bool = True, type: str = 'linear'):
     print(device)
     method = Fundamental().to(device)
-    return method.encode(path_to_image=path_to_image, to_vector=to_vector,to_tensor=to_tensor)
+    return method.encode(path_to_image=path_to_image, to_vector=to_vector,to_tensor=to_tensor, type=type)
 
-def image_similarity(im1_path: str = None, im2_path: str = None) -> float:
+def image_similarity(im1_path: str = None, im2_path: str = None, type_of_encoding: str = 'linear') -> float:
     print(device)
     method = Fundamental().to(device)
-    return method.distance(im1_path=im1_path, im2_path=im2_path)
+    return method.distance(im1_path=im1_path, im2_path=im2_path, type_of_encoding=type_of_encoding)
 
 def find_face(img_path: str = None, show: bool = False, save: bool = True) -> dict:
     image = cv2.imread(img_path)
