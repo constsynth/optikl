@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
+
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 
@@ -33,7 +34,7 @@ def crop_center(image_path: str = None,
     cropped_img.save(f'./cropped_{int(frac*100)}%.jpg')
     return cropped_img
 
-def super_resolution(image_path: str = None,) -> Image.Image:
+def super_resolution(image_path: str = None, save: bool = False) -> Image.Image:
     print(device)
     image = Image.open(image_path)
 
@@ -50,7 +51,8 @@ def super_resolution(image_path: str = None,) -> Image.Image:
     image = resolve_single(model_sr_gan, image)
     image = np.array(image, dtype=np.uint8)
     image = Image.fromarray(image)
-    image.save('./after_sr.jpg')
+    if save:
+        image.save('./after_sr.jpg')
     return image
 
 def represent(path_to_image: str = None, to_vector: bool = False, to_tensor: bool = True):
