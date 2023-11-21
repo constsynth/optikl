@@ -178,3 +178,4 @@ sympy==1.12
 telebot==0.0.5
 tensorflow==2.14.0
 torch=2.0.1
+mediapipe
